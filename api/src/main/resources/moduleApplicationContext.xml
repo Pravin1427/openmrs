@@ -1,26 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<!-- Beans to add to the current Application context definition -->
-
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:p="http://www.springframework.org/schema/p"
        xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:jee="http://www.springframework.org/schema/jee"
        xmlns:tx="http://www.springframework.org/schema/tx"
-       xmlns:aop="http://www.springframework.org/schema/aop"
-       xmlns:util="http://www.springframework.org/schema/util"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-  		    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
-  		    http://www.springframework.org/schema/context
-  		    http://www.springframework.org/schema/context/spring-context-3.0.xsd
-  		    http://www.springframework.org/schema/jee
-  		    http://www.springframework.org/schema/jee/spring-jee-3.0.xsd
-  		    http://www.springframework.org/schema/tx
-  		    http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
-  		    http://www.springframework.org/schema/aop
-  		    http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
-  		    http://www.springframework.org/schema/util
-  		    http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+                           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                           http://www.springframework.org/schema/context
+                           http://www.springframework.org/schema/context/spring-context-3.0.xsd
+                           http://www.springframework.org/schema/tx
+                           http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+
+    <!-- Enable annotation driven services -->
+    <context:annotation-config />
+    <context:component-scan base-package="org.openmrs.module.helloworld" />
+
+    <!-- DAO Bean -->
+    <bean id="helloworld.HelloWorldMessageDAO"
+          class="org.openmrs.module.helloworld.db.hibernate.HelloWorldMessageDAOImpl">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+
+    <!-- Service Bean -->
+    <bean id="helloworld.HelloWorldMessageService"
+          class="org.openmrs.module.helloworld.api.impl.HelloWorldMessageServiceImpl">
+        <property name="dao" ref="helloworld.HelloWorldMessageDAO" />
+    </bean>
+
+    <!-- Register the service in OpenMRS context -->
+    <bean parent="serviceContext">
+        <property name="moduleService">
+            <list>
+                <value>org.openmrs.module.helloworld.api.HelloWorldMessageService</value>
+                <ref bean="helloworld.HelloWorldMessageService" />
+            </list>
+        </property>
+    </bean>
+
+    <!-- Transaction Management -->
+    <tx:annotation-driven transaction-manager="transactionManager" />
 
 </beans>

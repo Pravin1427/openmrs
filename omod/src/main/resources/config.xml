@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module configVersion="1.2">
+<module xmlns="http://openmrs.org/module/properties/config/2.1"
+		configVersion="1.2">
 	<!-- Module Properties -->
 	<id>${project.parent.artifactId}</id>
 	<name>${project.parent.name}</name>
@@ -11,13 +12,14 @@
 
 	<!-- Required Modules -->
 	<require_modules>
-		<require_module version="2.9">org.openmrs.module.webservices.rest</require_module>
-	</require_modules>
 
-	<require_modules>
-		<require_module version="2.9">org.openmrs.module.webservices.rest</require_module>
+		<require_module version="2.4.0">org.openmrs.module.webservices.rest</require_module>
 		<require_module version="1.8.0">org.openmrs.module.legacyui</require_module>
 	</require_modules>
+
 	<!-- Module Activator -->
 	<activator>org.openmrs.module.helloworld.HelloWorldActivator</activator>
+
+	<!-- Liquibase Configuration -->
+	<updateFile>liquibase.xml</updateFile>
 </module>
