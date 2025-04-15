@@ -18,7 +18,14 @@ public class HelloWorldMessageDAOImpl extends HibernateOpenmrsObjectDAO<HelloWor
 
     @Override
     public HelloWorldMessage getMessageByUuid(String uuid) {
-        return getByUuid(uuid); // Using parent class method
+        if (uuid == null) {
+            return null;
+        }
+        return (HelloWorldMessage) sessionFactory.getCurrentSession()
+                .createQuery("from helloworld.HelloWorldMessage where uuid = :uuid", HelloWorldMessage.class)
+                .setParameter("uuid", uuid)
+                .uniqueResult();
+
     }
 
     @Override
