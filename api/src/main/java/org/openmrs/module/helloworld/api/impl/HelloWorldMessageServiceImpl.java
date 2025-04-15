@@ -6,6 +6,8 @@ import org.openmrs.api.impl.BaseOpenmrsService;
 import org.openmrs.module.helloworld.HelloWorldMessage;
 import org.openmrs.module.helloworld.api.HelloWorldMessageService;
 import org.openmrs.module.helloworld.db.HelloWorldMessageDAO;
+
+import javax.transaction.Transactional;
 import java.util.Date;
 import java.util.List;
 
@@ -28,6 +30,7 @@ public class HelloWorldMessageServiceImpl extends BaseOpenmrsService implements 
     }
 
     @Override
+    @Transactional
     public HelloWorldMessage saveMessage(HelloWorldMessage message) {
         if (message.getId() == null) {
             message.setCreator(Context.getAuthenticatedUser());

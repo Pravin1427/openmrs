@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-@RequestMapping(value = "/rest/" + RestConstants.VERSION_1 + "/helloworld")
+@RequestMapping(value = "/rest/" + RestConstants.VERSION_1 + "/helloworld/simple")
 public class HelloWorldController extends BaseRestController {
 
 	@RequestMapping(method = RequestMethod.GET)

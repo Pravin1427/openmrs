@@ -9,12 +9,11 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity(name = "helloworld.HelloWorldMessage")
-@Table(name = "helloworld_messages_v2")
+@Table(name = "helloworld_messages_v3")
 public class HelloWorldMessage extends BaseOpenmrsObject {
 
     @Id
-    @GeneratedValue(generator = "native")
-    @GenericGenerator(name = "native", strategy = "native")
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // Fix: Use IDENTITY instead of native
     @Column(name = "message_id")
     private Integer id;
 
@@ -38,7 +37,6 @@ public class HelloWorldMessage extends BaseOpenmrsObject {
     private Date dateChanged;
 
     @Column(name = "voided", nullable = false)
-    @Type(type = "yes_no")
     private Boolean voided = false;
 
     @ManyToOne

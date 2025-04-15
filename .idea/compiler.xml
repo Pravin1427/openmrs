@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="basicmodule-omod" />
+        <module name="basicmodule-api" />
         <module name="helloworld-api" />
         <module name="helloworld-omod" />
       </profile>
