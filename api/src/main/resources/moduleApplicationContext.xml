@@ -10,30 +10,10 @@
                            http://www.springframework.org/schema/tx
                            http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
 
-    <!-- Enable annotation-driven transactions and component scanning -->
     <context:annotation-config />
     <tx:annotation-driven transaction-manager="transactionManager" />
-    <context:component-scan base-package="org.openmrs.module.helloworld" />
 
-    <!-- DAO Bean -->
-    <bean id="HelloWorldMessageDAO"
-          class="org.openmrs.module.helloworld.db.hibernate.HelloWorldMessageDAOImpl">
-        <property name="sessionFactory" ref="sessionFactory" />
-    </bean>
+    <!-- Only scan your new package if applicable -->
+    <!-- <context:component-scan base-package="org.openmrs.module.openmrsextension" /> -->
 
-    <!-- Service Bean -->
-    <bean id="HelloWorldMessageService"
-          class="org.openmrs.module.helloworld.api.impl.HelloWorldMessageServiceImpl">
-        <property name="dao" ref="HelloWorldMessageDAO" />
-    </bean>
-
-    <!-- Register the service in OpenMRS context -->
-    <bean parent="serviceContext">
-        <property name="moduleService">
-            <list>
-                <value>org.openmrs.module.helloworld.api.HelloWorldMessageService</value>
-                <ref bean="HelloWorldMessageService" />
-            </list>
-        </property>
-    </bean>
 </beans>

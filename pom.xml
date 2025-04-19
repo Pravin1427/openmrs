@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>org.openmrs.module</groupId>
-	<artifactId>helloworld</artifactId>
+	<artifactId>openmrsextension</artifactId>
 	<version>1.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
-	<name>Hello World Module</name>
-	<description>A simple Hello World module for OpenMRS</description>
+	<name>OpenMRS Extension Module</name>
+	<description>An extension module that depends on HelloWorld</description>
 	<url>https://wiki.openmrs.org</url>
 
 	<modules>
@@ -23,7 +25,6 @@
 
 	<dependencyManagement>
 		<dependencies>
-			<!-- OpenMRS core -->
 			<dependency>
 				<groupId>org.openmrs.api</groupId>
 				<artifactId>openmrs-api</artifactId>
@@ -48,6 +49,12 @@
 				<version>2.9</version>
 				<scope>provided</scope>
 			</dependency>
+			<dependency>
+				<groupId>org.openmrs.module</groupId>
+				<artifactId>helloworld</artifactId>
+				<version>1.0.1</version>
+			</dependency>
+
 		</dependencies>
 	</dependencyManagement>
 

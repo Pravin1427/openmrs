@@ -2,24 +2,23 @@
 <module xmlns="http://openmrs.org/module/properties/config/2.1"
 		configVersion="1.2">
 	<!-- Module Properties -->
-	<id>${project.parent.artifactId}</id>
-	<name>${project.parent.name}</name>
-	<version>${project.parent.version}</version>
-	<package>org.openmrs.module.${project.parent.artifactId}</package>
-	<author>Your Name</author>
-	<description>${project.parent.description}</description>
-	<require_version>${openMRSVersion}</require_version>
+	<id>openmrsextension</id>
+	<version>1.0.1-SNAPSHOT</version>
+	<name>OpenMRS Extension Module</name>
+	<description>An extension module that depends on HelloWorld</description>
+	<package>org.openmrs.module.openmrsextension</package>
+	<require_version>2.4.0</require_version>
+
 
 	<!-- Required Modules -->
 	<require_modules>
-
 		<require_module version="2.4.0">org.openmrs.module.webservices.rest</require_module>
 		<require_module version="1.8.0">org.openmrs.module.legacyui</require_module>
+		<require_module version="1.0.1-SNAPSHOT">org.openmrs.module.helloworld</require_module>
 	</require_modules>
 
 	<!-- Module Activator -->
-	<activator>org.openmrs.module.helloworld.HelloWorldActivator</activator>
+	<activator>org.openmrs.module.openmrsextension.OpenmrsExtensionActivator</activator>
 
-	<!-- Liquibase Configuration -->
-	<updateFile>liquibase.xml</updateFile>
+
 </module>
