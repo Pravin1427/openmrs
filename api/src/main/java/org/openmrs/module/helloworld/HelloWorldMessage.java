@@ -13,7 +13,7 @@ import java.util.Date;
 public class HelloWorldMessage extends BaseOpenmrsObject {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // Fix: Use IDENTITY instead of native
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "message_id")
     private Integer id;
 

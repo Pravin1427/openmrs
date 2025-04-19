@@ -7,5 +7,11 @@
             http://www.springframework.org/schema/context
             http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
-	<context:component-scan base-package="org.openmrs.module.helloworld.web.controller" />
+	<context:component-scan base-package="org.openmrs.module.helloworld.web" />
+	<bean id="helloWorldAuthFilter" class="org.openmrs.module.helloworld.web.filter.HelloWorldAuthFilter" />
+
+	<bean class="org.springframework.web.filter.DelegatingFilterProxy">
+		<property name="targetBeanName" value="helloWorldAuthFilter" />
+	</bean>
+
 </beans>

@@ -7,4 +7,15 @@
             org.openmrs.module.helloworld.web.resource.HelloWorldMessageResource
         </param-value>
     </context-param>
+
+    <filter>
+        <filter-name>HelloWorldAuthFilter</filter-name>
+        <filter-class>org.openmrs.module.helloworld.web.filter.HelloWorldAuthFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>HelloWorldAuthFilter</filter-name>
+        <url-pattern>/ws/rest/v1/helloworld</url-pattern>
+    </filter-mapping>
+
 </web-app>

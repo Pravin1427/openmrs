@@ -1,4 +1,7 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
@@ -62,6 +65,7 @@
 			</resource>
 		</resources>
 		<plugins>
+			<!-- OpenMRS Plugin -->
 			<plugin>
 				<groupId>org.openmrs.maven.plugins</groupId>
 				<artifactId>maven-openmrs-plugin</artifactId>
@@ -83,6 +87,24 @@
 					</execution>
 				</executions>
 			</plugin>
+
+			<!-- Force Manifest Entries -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>3.4.1</version>
+				<configuration>
+					<archive>
+						<manifestEntries>
+							<OpenMRS-Module-Id>helloworld</OpenMRS-Module-Id>
+							<OpenMRS-Module-Name>Hello World</OpenMRS-Module-Name>
+							<OpenMRS-Module-Version>1.0.1-SNAPSHOT</OpenMRS-Module-Version>
+							<OpenMRS-Module-Package>org.openmrs.module.helloworld</OpenMRS-Module-Package>
+						</manifestEntries>
+					</archive>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
+
 </project>

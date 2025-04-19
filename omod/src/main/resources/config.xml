@@ -2,13 +2,13 @@
 <module xmlns="http://openmrs.org/module/properties/config/2.1"
 		configVersion="1.2">
 	<!-- Module Properties -->
-	<id>${project.parent.artifactId}</id>
-	<name>${project.parent.name}</name>
-	<version>${project.parent.version}</version>
-	<package>org.openmrs.module.${project.parent.artifactId}</package>
-	<author>Your Name</author>
-	<description>${project.parent.description}</description>
-	<require_version>${openMRSVersion}</require_version>
+	<id>helloworld</id>
+	<name>Hello World Module</name>
+	<version>1.0.1-SNAPSHOT</version>
+	<package>org.openmrs.module.helloworld</package>
+	<description>A test module for Hello World</description>
+	<require_version>2.4.0</require_version>
+
 
 	<!-- Required Modules -->
 	<require_modules>
