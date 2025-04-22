@@ -1,0 +1,56 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+
+    <changeSet id="openmrsextension-comments-002" author="YourName">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="comments"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="comments">
+            <column name="comment_id" type="int(11)" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="message_id" type="int(11)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="comment_text" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creator" type="int(11)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date_created" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="uuid" type="char(38)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint
+                baseTableName="comments"
+                baseColumnNames="message_id"
+                constraintName="fk_comments_message"
+                referencedTableName="helloworld_messages_v3"
+                referencedColumnNames="message_id"
+                onDelete="CASCADE" />
+
+        <addForeignKeyConstraint
+                baseTableName="comments"
+                baseColumnNames="creator"
+                constraintName="fk_comments_creator"
+                referencedTableName="users"
+                referencedColumnNames="user_id"
+                onDelete="CASCADE" />
+
+        <addUniqueConstraint
+                tableName="comments"
+                columnNames="uuid"
+                constraintName="uk_comments_uuid"/>
+    </changeSet>
+</databaseChangeLog>

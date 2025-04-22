@@ -12,8 +12,32 @@
 
     <context:annotation-config />
     <tx:annotation-driven transaction-manager="transactionManager" />
-
+    <context:component-scan base-package="org.openmrs.module.openmrsextension" />
     <!-- Only scan your new package if applicable -->
     <!-- <context:component-scan base-package="org.openmrs.module.openmrsextension" /> -->
+
+    <!-- DAO Bean -->
+    <bean id="CommentDAO"
+          class="org.openmrs.module.openmrsextension.db.hibernate.CommentDAOImpl">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+
+    <!-- Service Bean -->
+    <bean id="CommentService"
+          class="org.openmrs.module.openmrsextension.api.impl.CommentServiceImpl">
+        <property name="commentDAO" ref="CommentDAO" />
+    </bean>
+
+    <!-- Register the service in OpenMRS context -->
+    <!--
+<bean parent="serviceContext">
+    <property name="moduleService">
+        <list>
+            <value>org.openmrs.module.openmrsextension.api.CommentService</value>
+            <ref bean="CommentService" />
+        </list>
+    </property>
+</bean>
+-->
 
 </beans>

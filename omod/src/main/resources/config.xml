@@ -20,5 +20,7 @@
 	<!-- Module Activator -->
 	<activator>org.openmrs.module.openmrsextension.OpenmrsExtensionActivator</activator>
 
+	<!-- Liquibase Configuration -->
+	<updateFile>liquibase.xml</updateFile>
 
 </module>
