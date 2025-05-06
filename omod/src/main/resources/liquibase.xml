@@ -4,53 +4,102 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
 
-    <changeSet id="openmrsextension-comments-002" author="YourName">
+    <changeSet id="openmrsextension-patient-transfer-011" author="prabin">
         <preConditions onFail="MARK_RAN">
             <not>
-                <tableExists tableName="comments"/>
+                <tableExists tableName="patient_transfer"/>
             </not>
         </preConditions>
 
-        <createTable tableName="comments">
-            <column name="comment_id" type="int(11)" autoIncrement="true">
+        <createTable tableName="patient_transfer">
+            <column name="transfer_id" type="int(11)" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="message_id" type="int(11)">
+
+            <!-- Core patient info -->
+            <column name="patient_id" type="int(11)">
                 <constraints nullable="false"/>
             </column>
-            <column name="comment_text" type="varchar(255)">
+            <column name="first_name" type="varchar(100)">
                 <constraints nullable="false"/>
             </column>
+            <column name="last_name" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="encounter_id" type="int(11)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="location" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+
+            <!-- Transfer-specific fields -->
+            <column name="doctor_name" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="transfer_reason" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="destination_hospital" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+
+            <!-- Required by BaseOpenmrsData -->
             <column name="creator" type="int(11)">
                 <constraints nullable="false"/>
             </column>
             <column name="date_created" type="datetime">
                 <constraints nullable="false"/>
             </column>
+            <column name="changed_by" type="int(11)"/>
+            <column name="date_changed" type="datetime"/>
+            <column name="voided" type="boolean" defaultValueBoolean="false"/>
+            <column name="voided_by" type="int(11)"/>
+            <column name="date_voided" type="datetime"/>
+            <column name="void_reason" type="varchar(255)"/>
+
             <column name="uuid" type="char(38)">
                 <constraints nullable="false" unique="true"/>
             </column>
         </createTable>
 
-        <addForeignKeyConstraint
-                baseTableName="comments"
-                baseColumnNames="message_id"
-                constraintName="fk_comments_message"
-                referencedTableName="helloworld_messages_v3"
-                referencedColumnNames="message_id"
-                onDelete="CASCADE" />
+        <!-- Foreign Keys -->
+        <addForeignKeyConstraint baseTableName="patient_transfer"
+                                 baseColumnNames="patient_id"
+                                 constraintName="fk_pt_patient"
+                                 referencedTableName="patient"
+                                 referencedColumnNames="patient_id"
+                                 onDelete="CASCADE"/>
 
-        <addForeignKeyConstraint
-                baseTableName="comments"
-                baseColumnNames="creator"
-                constraintName="fk_comments_creator"
-                referencedTableName="users"
-                referencedColumnNames="user_id"
-                onDelete="CASCADE" />
+        <addForeignKeyConstraint baseTableName="patient_transfer"
+                                 baseColumnNames="encounter_id"
+                                 constraintName="fk_pt_encounter"
+                                 referencedTableName="encounter"
+                                 referencedColumnNames="encounter_id"
+                                 onDelete="CASCADE"/>
 
-        <addUniqueConstraint
-                tableName="comments"
-                columnNames="uuid"
-                constraintName="uk_comments_uuid"/>
+        <addForeignKeyConstraint baseTableName="patient_transfer"
+                                 baseColumnNames="creator"
+                                 constraintName="fk_pt_creator"
+                                 referencedTableName="users"
+                                 referencedColumnNames="user_id"
+                                 onDelete="CASCADE"/>
+
+        <!-- Optional: Foreign keys for audit fields -->
+        <addForeignKeyConstraint baseTableName="patient_transfer"
+                                 baseColumnNames="changed_by"
+                                 constraintName="fk_pt_changed_by"
+                                 referencedTableName="users"
+                                 referencedColumnNames="user_id"/>
+
+        <addForeignKeyConstraint baseTableName="patient_transfer"
+                                 baseColumnNames="voided_by"
+                                 constraintName="fk_pt_voided_by"
+                                 referencedTableName="users"
+                                 referencedColumnNames="user_id"/>
+
+        <addUniqueConstraint tableName="patient_transfer"
+                             columnNames="uuid"
+                             constraintName="uk_patient_transfer_uuid"/>
     </changeSet>
 </databaseChangeLog>

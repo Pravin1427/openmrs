@@ -5,25 +5,21 @@
 
 	<parent>
 		<groupId>org.openmrs.module</groupId>
-		<artifactId>openmrsextension</artifactId>
+		<artifactId>openmrspatient</artifactId>
 		<version>1.0.1-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>openmrsextension-api</artifactId>
+	<artifactId>openmrspatient-api</artifactId>
 	<packaging>jar</packaging>
-	<name>OpenMRS Extension Module API</name>
-	<description>API project for OpenMRS Extension Module</description>
+	<name>OpenMRS Patient Module API</name>
+	<description>API project for OpenMRS Patient Module</description>
 
 	<dependencies>
 		<dependency>
 			<groupId>org.openmrs.api</groupId>
 			<artifactId>openmrs-api</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>org.openmrs.module</groupId>
-			<artifactId>helloworld-api</artifactId>
-			<version>1.0.1-SNAPSHOT</version>
-			<scope>provided</scope>
-		</dependency>
+
+
 	</dependencies>
 </project>

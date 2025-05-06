@@ -5,11 +5,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>org.openmrs.module</groupId>
-	<artifactId>openmrsextension</artifactId>
+	<artifactId>openmrspatient</artifactId>
 	<version>1.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
-	<name>OpenMRS Extension Module</name>
-	<description>An extension module that depends on HelloWorld</description>
+	<name>OpenMRS Patient Module</name>
+	<description>A module that allows us to extract patient data</description>
 	<url>https://wiki.openmrs.org</url>
 
 	<modules>
@@ -49,17 +49,9 @@
 				<version>2.9</version>
 				<scope>provided</scope>
 			</dependency>
-			<dependency>
-				<groupId>org.openmrs.module</groupId>
-				<artifactId>helloworld</artifactId>
-				<version>1.0.1</version>
-			</dependency>
-			<dependency>
-				<groupId>org.openmrs.module</groupId>
-				<artifactId>helloworld-api</artifactId>
-				<version>1.0.1-SNAPSHOT</version>
-				<scope>provided</scope>
-			</dependency>
+
+
+
 		</dependencies>
 	</dependencyManagement>
 

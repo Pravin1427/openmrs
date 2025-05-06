@@ -5,14 +5,14 @@
 
 	<parent>
 		<groupId>org.openmrs.module</groupId>
-		<artifactId>openmrsextension</artifactId>
+		<artifactId>openmrspatient</artifactId>
 		<version>1.0.1-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>openmrsextension-omod</artifactId>
+	<artifactId>openmrspatient-omod</artifactId>
 	<packaging>jar</packaging>
-	<name>OpenMRS Extension Module OMOD</name>
-	<description>OMOD project for OpenMRS Extension Module</description>
+	<name>OpenMRS Patient Module OMOD</name>
+	<description>OMOD project for OpenMRS Patient Module</description>
 
 	<dependencies>
 		<dependency>
@@ -51,12 +51,10 @@
 			<scope>test</scope>
 		</dependency>
 
-		<dependency>
-			<groupId>org.openmrs.module</groupId>
-			<artifactId>helloworld-api</artifactId>
-			<version>1.0.1-SNAPSHOT</version>
-			<scope>provided</scope>
-		</dependency>
+
+
+
+
 	</dependencies>
 
 	<build>
