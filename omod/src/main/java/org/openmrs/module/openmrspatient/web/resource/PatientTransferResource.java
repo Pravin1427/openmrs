@@ -84,8 +84,14 @@ public class PatientTransferResource extends DelegatingCrudResource<PatientTrans
     @Override
     public DelegatingResourceDescription getCreatableProperties() {
         DelegatingResourceDescription description = new DelegatingResourceDescription();
+        description.addRequiredProperty("patientId");
+        description.addRequiredProperty("firstName");
+        description.addRequiredProperty("lastName");
+        description.addRequiredProperty("encounterId");
+        description.addRequiredProperty("location");
+        description.addRequiredProperty("doctorName");
         description.addRequiredProperty("transferReason");
-        description.addProperty("destinationHospital");
+        description.addRequiredProperty("destinationHospital");
         return description;
     }
 

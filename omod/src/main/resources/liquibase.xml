@@ -4,7 +4,7 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
 
-    <changeSet id="openmrsextension-patient-transfer-011" author="prabin">
+    <changeSet id="openmrsextension-patient-transfer-012" author="prabin">
         <preConditions onFail="MARK_RAN">
             <not>
                 <tableExists tableName="patient_transfer"/>
