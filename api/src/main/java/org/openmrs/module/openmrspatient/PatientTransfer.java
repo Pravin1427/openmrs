@@ -41,6 +41,7 @@ public class PatientTransfer extends BaseOpenmrsData {
     @Column(name = "uuid", unique = true, nullable = false, length = 38)
     private String uuid;
 
+
     @Override
     public Integer getId() {
         return transferId;
