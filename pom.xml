@@ -5,11 +5,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>org.openmrs.module</groupId>
-	<artifactId>openmrspatient</artifactId>
+	<artifactId>openmrseventrecords</artifactId>
 	<version>1.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
-	<name>OpenMRS Patient Module</name>
-	<description>A module that allows us to extract patient data</description>
+	<name>OpenMRS Event Records Module</name>
+	<description>Parent project for OpenMRS Event Records Module</description>
 	<url>https://wiki.openmrs.org</url>
 
 	<modules>

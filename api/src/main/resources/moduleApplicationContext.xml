@@ -12,29 +12,15 @@
 
     <context:annotation-config />
     <tx:annotation-driven transaction-manager="transactionManager" />
-    <context:component-scan base-package="org.openmrs.module.openmrspatient" />
-    <!-- Only scan your new package if applicable -->
-    <!-- <context:component-scan base-package="org.openmrs.module.openmrsextension" /> -->
+    <context:component-scan base-package="org.openmrs.module.openmrseventrecords" /> <bean id="EventRecordDAO" class="org.openmrs.module.openmrseventrecords.db.hibernate.HibernateEventRecordDAOImpl"> <property name="sessionFactory" ref="sessionFactory" />
+</bean>
 
-    <!-- DAO Bean -->
-    <bean id="PatientTransferDAO"
-          class="org.openmrs.module.openmrspatient.db.hibernate.PatientTransferDAOImpl">
-        <property name="sessionFactory" ref="sessionFactory" />
-    </bean>
+    <bean id="EventRecordService" class="org.openmrs.module.openmrseventrecords.api.impl.EventRecordServiceImpl"> <property name="eventRecordDAO" ref="EventRecordDAO" /> </bean>
 
-    <!-- Service Bean -->
-    <bean id="PatientTransferService"
-          class="org.openmrs.module.openmrspatient.api.impl.PatientTransferServiceImpl">
-        <property name="patientTransferDAO" ref="PatientTransferDAO" />
-    </bean>
-
-    <!-- Register the service in OpenMRS context -->
     <bean parent="serviceContext">
         <property name="moduleService">
             <list>
-                <value>org.openmrs.module.openmrspatient.api.PatientTransferService</value>
-                <ref bean="PatientTransferService" />
-            </list>
+                <value>org.openmrs.module.openmrseventrecords.api.EventRecordService</value> <ref bean="EventRecordService" /> </list>
         </property>
     </bean>
 

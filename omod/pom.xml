@@ -5,14 +5,14 @@
 
 	<parent>
 		<groupId>org.openmrs.module</groupId>
-		<artifactId>openmrspatient</artifactId>
+		<artifactId>openmrseventrecords</artifactId>
 		<version>1.0.1-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>openmrspatient-omod</artifactId>
+	<artifactId>openmrseventrecords-omod</artifactId>
 	<packaging>jar</packaging>
-	<name>OpenMRS Patient Module OMOD</name>
-	<description>OMOD project for OpenMRS Patient Module</description>
+	<name>Event Records OMOD</name>
+	<description>OMOD project for OpenMRS Event Records Module</description>
 
 	<dependencies>
 		<dependency>

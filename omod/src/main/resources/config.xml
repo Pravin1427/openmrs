@@ -1,27 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module xmlns="http://openmrs.org/module/properties/config/2.1"
 		configVersion="1.2">
-	<!-- Module Properties -->
-	<id>openmrspatient</id>
-	<version>1.0.1-SNAPSHOT</version>
-	<name>OpenMRS Patient Module</name>
-	<description>A module that allows us to extract patient data</description>
-	<package>org.openmrs.module.openmrspatient</package>
+	<id>openmrseventrecords</id>
+	<version>1.0.0-SNAPSHOT</version> <name>OpenMRS Event Records Module</name>
+	<description>A module that exposes event records data from the OpenMRS database.</description>
+	<package>org.openmrs.module.openmrseventrecords</package>
 	<require_version>2.4.0</require_version>
 
-
-	<!-- Required Modules -->
 	<require_modules>
 		<require_module version="2.4.0">org.openmrs.module.webservices.rest</require_module>
 		<require_module version="1.8.0">org.openmrs.module.legacyui</require_module>
-
 	</require_modules>
 
-	<!-- Module Activator -->
-	<activator>org.openmrs.module.openmrspatient.OpenmrsPatientActivator</activator>
+	<activator>org.openmrs.module.openmrseventrecords.OpenmrsEventRecordsActivator</activator>
 
 
-	<!-- Liquibase Configuration -->
-	<updateFile>liquibase.xml</updateFile>
 
 </module>

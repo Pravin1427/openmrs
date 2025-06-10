@@ -5,14 +5,14 @@
 
 	<parent>
 		<groupId>org.openmrs.module</groupId>
-		<artifactId>openmrspatient</artifactId>
+		<artifactId>openmrseventrecords</artifactId>
 		<version>1.0.1-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>openmrspatient-api</artifactId>
+	<artifactId>openmrseventrecords-api</artifactId>
 	<packaging>jar</packaging>
-	<name>OpenMRS Patient Module API</name>
-	<description>API project for OpenMRS Patient Module</description>
+	<name>Event Records API</name>
+	<description>API project for OpenMRS Event Records Module</description>
 
 	<dependencies>
 		<dependency>

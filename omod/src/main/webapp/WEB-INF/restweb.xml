@@ -4,7 +4,6 @@
     <context-param>
         <param-name>rest.resources</param-name>
         <param-value>
-            org.openmrs.module.openmrspatient.web.resource.PatientTransferResource
-        </param-value>
+            org.openmrs.module.openmrseventrecords.web.resource.EventRecordResource </param-value>
     </context-param>
 </web-app>
