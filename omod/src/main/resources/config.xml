@@ -2,8 +2,8 @@
 <module xmlns="http://openmrs.org/module/properties/config/2.1"
 		configVersion="1.2">
 	<id>openmrseventrecords</id>
-	<version>1.0.0-SNAPSHOT</version> <name>OpenMRS Event Records Module</name>
-	<description>A module that exposes event records data from the OpenMRS database.</description>
+	<version>1.0.0-SNAPSHOT</version> <name>OpenMRS Syncer Records Module</name>
+	<description>A module that exposes data from the OpenMRS 'syncer' table.</description>
 	<package>org.openmrs.module.openmrseventrecords</package>
 	<require_version>2.4.0</require_version>
 

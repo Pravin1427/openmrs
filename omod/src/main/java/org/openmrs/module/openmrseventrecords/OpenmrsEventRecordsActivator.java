@@ -19,7 +19,7 @@ public class OpenmrsEventRecordsActivator extends BaseModuleActivator { // <--- 
      */
     @Override // <--- Good practice to keep @Override
     public void started() {
-        log.info("Started OpenMRS Event Records Module"); // <--- Updated log message
+        log.info("Started OpenMRS Syncer Records Module"); // <--- Updated log message
         // Add any startup logic here, e.g., registering global properties or listeners
     }
 
@@ -28,7 +28,7 @@ public class OpenmrsEventRecordsActivator extends BaseModuleActivator { // <--- 
      */
     @Override // <--- Good practice to keep @Override
     public void stopped() { // <--- Changed method name
-        log.info("Stopped OpenMRS Event Records Module"); // <--- Updated log message
+        log.info("Stopped OpenMRS Syncer Records Module"); // <--- Updated log message
         // Add any shutdown logic here
     }
 }

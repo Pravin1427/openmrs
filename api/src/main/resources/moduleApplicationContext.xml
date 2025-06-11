@@ -12,15 +12,22 @@
 
     <context:annotation-config />
     <tx:annotation-driven transaction-manager="transactionManager" />
-    <context:component-scan base-package="org.openmrs.module.openmrseventrecords" /> <bean id="EventRecordDAO" class="org.openmrs.module.openmrseventrecords.db.hibernate.HibernateEventRecordDAOImpl"> <property name="sessionFactory" ref="sessionFactory" />
-</bean>
+    <context:component-scan base-package="org.openmrs.module.openmrseventrecords" />
 
-    <bean id="EventRecordService" class="org.openmrs.module.openmrseventrecords.api.impl.EventRecordServiceImpl"> <property name="eventRecordDAO" ref="EventRecordDAO" /> </bean>
+    <bean id="syncerDAO" class="org.openmrs.module.openmrseventrecords.db.hibernate.HibernateSyncerDAOImpl">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+
+    <bean id="syncerService" class="org.openmrs.module.openmrseventrecords.api.impl.SyncerServiceImpl">
+        <property name="syncerDAO" ref="syncerDAO" />
+    </bean>
 
     <bean parent="serviceContext">
         <property name="moduleService">
             <list>
-                <value>org.openmrs.module.openmrseventrecords.api.EventRecordService</value> <ref bean="EventRecordService" /> </list>
+                <value>org.openmrs.module.openmrseventrecords.api.SyncerService</value>
+                <ref bean="syncerService" />
+            </list>
         </property>
     </bean>
 
